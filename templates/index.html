@@ -47,13 +47,25 @@
             })
         }   
 
-            function showReview() {
+           function showReview() {
                 $.ajax({
                     type: "GET",
-                    url: "/review?sample_give=샘플데이터",
+                    url: "/review",
                     data: {},
                     success: function (response) {
-                        alert(response["msg"]);
+                        let reviews = response['all_reviews']
+                        for (let i = 0; i < reviews.length; i++) {
+                            let title = reviews[i]['title']
+                            let author = reviews[i]['author']
+                            let review = reviews[i]['review']
+
+                            let temp_html = `<tr>
+                                                <td>${title}</td>
+                                                <td>${author}</td>
+                                                <td>${review}</td>
+                                            </tr>`
+                            $('#reviews-box').append(temp_html)
+                        }
                     }
                 })
             }
