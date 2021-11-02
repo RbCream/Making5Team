@@ -4,6 +4,7 @@ app = Flask(__name__)
 from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
 db = client.dbsparta
+## 어드미니스트레이터
 
 ## HTML을 주는 부분
 @app.route('/')
