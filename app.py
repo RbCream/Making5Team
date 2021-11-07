@@ -8,6 +8,9 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+@app.route('/test')
+def test():
+    return 'NEW PAGE'
 # ## API 역할을 하는 부분
 # @app.route('/review', methods=['POST'])
 # def write_review():
