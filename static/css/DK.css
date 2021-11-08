@@ -40,8 +40,13 @@
   display: flex;
 }
 
-a:link, a:visited, a:hover, a:active {
+
+a:hover, a:link, a:visited, a:active {
   text-decoration: none;
+}
+.menu_font:hover{
+  text-decoration: none;
+  color:#000000
 }
 
 .sub_choice p {

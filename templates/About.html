@@ -3,6 +3,8 @@
 <html lang="en">
 
 <head>
+  <!-- 링크 아이콘 -->
+  <link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico')}}">
   <!-- 팀원 CSS -->
   <link rel="stylesheet" type="text/css" href="../static/css/DK.css">
   <link rel="stylesheet" type="text/css" href="../static/css/BC.css">
@@ -24,8 +26,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- OG 태그-->
+  <title>WeatherLOOK</title>
+  <meta property="og:title" content="WeatherLook" />
+  <meta property="og:description" content="오늘의 날씨와 딱 맞는옷은?" />
+  <meta property="og:image" content="{{ url_for('static', filename='w7.jpg') }}" />    
 
-  <title>Weather_LOOK</title>
+  <!-- 타이틀 -->
+  <title>WeatherLOOK</title>
 </head>
 
 <body>
@@ -37,10 +45,10 @@
     <div style="margin-top: 10px"></div>
     <!-- 최상단 로고 및 메뉴-->
     <div class="intro">
-      <div class="logo"><a href="DK_1105.html"><img src="../static/logo06.jpg"></a></div>
+      <div class="logo"><a href="/"><img src="../static/logo06.jpg"></a></div>
       <div class="header">
         <ul class="nav">
-          <li><a href="#" class="menu_font">ABOUT US</a></li>
+          <li><a href="/About" class="menu_font">ABOUT US</a></li>
         </ul>
         <div class="dropdown_dk">
           <div class="input-group">
