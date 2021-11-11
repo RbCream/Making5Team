@@ -1,79 +1,247 @@
-﻿
-<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="en">
-
 <head>
-  <!-- 링크 아이콘 -->
-  <link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico')}}">
-  <!-- 팀원 CSS -->
-  <link rel="stylesheet" type="text/css" href="../static/css/DK.css">
-  <link rel="stylesheet" type="text/css" href="../static/css/BC.css">
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <!--배너 영어 폰트-->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital@1&display=swap" rel="stylesheet">
-  <!--메뉴 영어 폰트-->
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Noto+Serif+Display:ital@1&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--배너 영어 폰트-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital@1&display=swap" rel="stylesheet">
+    <!--메뉴 영어 폰트-->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Noto+Serif+Display:ital@1&display=swap"
+          rel="stylesheet">
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <!-- OG 태그-->
-  <title>WeatherLOOK</title>
-  <meta property="og:title" content="WeatherLook" />
-  <meta property="og:description" content="오늘의 날씨와 딱 맞는옷은?" />
-  <meta property="og:image" content="{{ url_for('static', filename='w7.jpg') }}" />    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 
-  <!-- 타이틀 -->
-  <title>WeatherLOOK</title>
+    <title>WeatherLOOK</title>
+    <style>
+        @font-face {
+            font-family: 'OTWelcomeRA';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'InkLipquid';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .banner_font {
+            font-family: 'Noto Serif Display', serif;
+        }
+
+        .menu_font {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 20px;
+            color: #000000;
+        }
+
+        .wrap {
+            width: 100%;
+            height: 800px;
+        }
+
+        .intro {
+            width: 1008px;
+            height: 80px;
+            margin: auto;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            float: left;
+        }
+
+        .header {
+            float: left;
+            display: flex;
+        }
+
+        a:link, a:visited, a:hover, a:active {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        .input-group-append button {
+            border: 0;
+            outline: 0;
+        }
+
+        .nav {
+            margin-left: 620px;
+            line-height: 70px;
+            margin-top: 21px;
+        }
+
+        .dropdown_dk {
+            margin-left: 30px;
+            width: 100px;
+            margin-top: 35px;
+        }
+
+        .aboutus {
+            width: 1008px;
+            height: 80px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .team_member_backend {
+            width: 700px;
+            height: 450px;
+            margin: auto;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .team_member_frontend {
+            width: 700px;
+            height: 450px;
+            margin: auto;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .team_member_support {
+            width: 700px;
+            height: 450px;
+            margin: auto;
+            text-align: center;
+            font-size: 30px;
+        }
+
+
+    </style>
+
 </head>
 
 <body>
-
-
-
-  <!-- 네비게이션바 -->
-  <div class="wrap">
+<div class="wrap">
     <div style="margin-top: 10px"></div>
-    <!-- 최상단 로고 및 메뉴-->
     <div class="intro">
-      <div class="logo"><a href="/"><img src="../static/logo06.jpg"></a></div>
-      <div class="header">
-        <ul class="nav">
-          <li><a href="/About" class="menu_font">ABOUT US</a></li>
-        </ul>
-        <div class="dropdown_dk">
-          <div class="input-group">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary dropdown-toggle menu_font" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  line-height: 55px;">SEASON LOOK
-              </button>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">1</a>
-                <a class="dropdown-item" href="#">2</a>
-                <a class="dropdown-item" href="#">3</a>
-              </div>
+        <div class="logo"><a href="/"><img src="../static/logo06.jpg"></a></div>
+        <div class="header">
+            <ul class="nav">
+                <li><a href="About" class="menu_font">ABOUT US</a></li>
+            </ul>
+            <div class="dropdown_dk">
+                <div class="input-group">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary dropdown-toggle menu_font" type="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">BRAND PAGE
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="https://github.com/RbCream" style="font-family:'OTWelcomeRA';">헌종</a>
+                            <a class="dropdown-item" href="https://blog.naver.com/pgd6446" style="font-family:'OTWelcomeRA';">기덕</a>
+                            <a class="dropdown-item" href="https://blog.naver.com/surmang" style="font-family:'OTWelcomeRA';">병철</a>
+                            <a class="dropdown-item" href="https://velog.io/@tumemanque00" style="font-family:'OTWelcomeRA';">도경</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-
-  <!-- Footer -->
-  <footer>
-    <div class="main_footer">
-      <p style="text-align:center;margin: 0;font-size: 0.8rem;line-height: 20px;padding: 35px;background: #333;color: #fff;">Copyright by 메이킹챌린지 5조 <br> Thanks to 스파르타 코딩 클럽 </p>
+    <div style="margin-top: 60px"></div>
+    <div class="aboutus">
+        <div><h1 class="banner_font"><strong>ABOUT</strong><strong><span style="font-family: 'OTWelcomeRA';">&nbsp;&nbsp;&nbsp;이리오너라</span></strong>
+        </h1></div>
     </div>
-  </footer>
+    <div class="aboutus">
+        <div><p style="font-family: 'InkLipquid'; font-size: 20px;"><b>"개발은 조장을 잘 만나는 것을 최우선으로 해야한다"</b></p></div>
+    </div>
+    <div style="margin-top: 5px"></div>
+    <div class="team_member_backend">
+        <p class="banner_font" style="text-align: left;"><b>Backend</b></p>
+        <div style="margin-top: 30px"></div>
+        <div class="card float-left" style="width: 16rem;">
+            <img class="card-img-top" src="../static/01.jpg" style="width: 100%; height: 250px;" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title menu_font"><strong>Team leader</strong><span
+                        style="font-family:'OTWelcomeRA'; font-size: 27px;">&nbsp;&nbsp;헌종</span></h5>
+                <p class="card-text" style="font-family:'OTWelcomeRA'; font-size: 20px;">야옹 (이러다 다 죽어!!!!)</p>
+            </div>
+        </div>
+        <div class="card float-right" style="width: 16rem;">
+            <img class="card-img-top" src="../static/02.jpg" style="width: 100%; height: 250px;" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title menu_font"><strong>Team member</strong><span
+                        style="font-family:'OTWelcomeRA'; font-size: 27px;">&nbsp;&nbsp;기덕</span></h5>
+                <p class="card-text" style="font-family:'OTWelcomeRA'; font-size: 20px;">제가 뭘 도와드리면 될까요?</p>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top: 70px"></div>
+    <div class="team_member_frontend">
+        <p class="banner_font" style="text-align: left;"><b>Frontend</b></p>
+        <div style="margin-top: 30px"></div>
+        <div class="card float-left" style="width: 16rem;">
+            <img class="card-img-top" src="../static/03.png" style="width: 100%; height: 250px;" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title menu_font"><strong>Team member</strong><span
+                        style="font-family:'OTWelcomeRA'; font-size: 27px;">&nbsp;&nbsp;병철</span></h5>
+                <p class="card-text" style="font-family:'OTWelcomeRA'; font-size: 20px;">자신감은 언제나 뿜뿜...</p>
+            </div>
+        </div>
+        <div class="card float-right" style="width: 16rem;">
+            <img class="card-img-top" src="../static/07.png" style="width: 100%; height: 250px;" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title menu_font"><strong>Team member</strong><span
+                        style="font-family:'OTWelcomeRA'; font-size: 27px;">&nbsp;&nbsp;도경</span></h5>
+                <p class="card-text" style="font-family:'OTWelcomeRA'; font-size: 20px;">오!... 좋아요~ 좋아요.</p>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top: 70px"></div>
+    <div class="team_member_support">
+        <p class="banner_font" style="text-align: left;"><b>Tutor</b><span
+                style="margin-left: 370px;"><b>Helper</b></span></p>
+        <div style="margin-top: 30px"></div>
+        <div class="card float-left" style="width: 16rem;">
+            <img class="card-img-top" src="../static/img03.jpg" style="width: 100%; height: 250px;" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title menu_font"><strong>Team tutor</strong><span
+                        style="font-family:'OTWelcomeRA'; font-size: 27px;">&nbsp;&nbsp;동현</span></h5>
+                <p class="card-text" style="font-family:'OTWelcomeRA'; font-size: 18px;">퇴근하면 치킨 먹을거에요. 훗.</p>
+            </div>
+        </div>
+        <div class="card float-right" style="width: 16rem;">
+            <img class="card-img-top" src="../static/09.jpg" style="width: 100%; height: 250px;" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title menu_font"><strong>Team helper</strong><span
+                        style="font-family:'OTWelcomeRA'; font-size: 20px;">&nbsp;&nbsp;깍두기</span></h5>
+                <p class="card-text" style="font-family:'OTWelcomeRA'; font-size: 19px;">저는 그냥 5조 헬퍼에요^0^</p>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top: 120px"></div>
+    <!-- Footer -->
+    <footer>
+        <div class="main_footer">
+            <p style="text-align:center;margin: 0;font-size: 0.8rem;line-height: 20px;padding: 35px;background: #333;color: #fff;">
+                Copyright by 메이킹챌린지 5조 <br> Thanks to 스파르타 코딩 클럽 </p>
+        </div>
+    </footer>
 
-  </div>
+</div>
+
 </body>
 
 </html>

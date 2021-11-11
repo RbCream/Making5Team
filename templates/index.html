@@ -32,6 +32,117 @@
   <meta property="og:image" content="{{ url_for('static', filename='w7.jpg') }}" />    
   <!-- 타이틀-->
   <title>WeatherLOOK</title>
+
+  <script>
+
+    $(document).ready(function () {
+                Seoul1()
+                loadimage();
+        });    
+    function loadimage(a) {
+            $.ajax({
+                    type: "GET",
+                    url: "/order",
+                    data: {},
+                    success: function (response) {
+                        if (response["result"] == "success") {
+                            let weather = response['weather'];
+                            console.log(weather)
+                            for (let i = 0 ; i < 5 ; i++) {
+                                let number = weather[i]['number']
+                                let image = weather[i]['image']
+
+
+                                let temp_html = `<div class="sub_gallery">
+      <a href="#" data-toggle="modal" data-target="#imgpopup${number}">
+        <img src="${image}" alt="" width="200">
+      </a>
+    </div>
+
+    <!--modal-->
+    <div class="modal fade" id="imgpopup${number}" data-keyboard="false">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">크게 보기</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <img class="card-img-top rounded img-fluid" src="${image}">
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>`
+
+                                $('#opt1').append(temp_html)
+                            }
+
+                        }
+                    }
+                })
+            };
+
+    function putdata() {
+                let number = $('#number1').val()
+                let image = $('#image1').val()
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "/order",
+                    data: {number_give:number, image_give:image},
+                    success: function (response) {
+                        if (response["result"] == "success") {
+                            alert(response["msg"]);
+                            window.location.reload();
+                        }
+                    }
+                })
+            }
+    function Seoul1() {
+            let city_list = ["Seoul,KR"]
+            for (let i = 0; i < city_list.length; i++) {
+                let name = city_list[i]
+                let api = "http://api.openweathermap.org/data/2.5/weather?q=" + name +
+                    "&APPID=684b9419e74c9620c86fe9084dbb7c31&units=metric"
+
+                $.ajax({
+                    type: "GET",
+                    url: api,
+                    data: {},
+                    success: function (response) {
+                        let icon = response['weather'][0]['icon']
+                        let temp = response['main']['temp']
+                      // 영어 > 한글로 못바꿔서 그냥 서울 이라고 씀 114 참고
+                        let citiname = response['name']
+
+
+                        let temp_html = `<div class="center" id="names-q1">
+                                            <div class="sub_choice under_button">
+                                            <p style="  padding: 0 20px;"><span style="  padding: 0px 100pt;">지역: 서울</span> 날씨: <img src="http://openweathermap.org/img/wn/${icon}.png"></p>
+                                            </div>
+                                            <div class="sub_choice under_button" id:"temp1">
+                                              <p style="  padding: 0 20px;"><span style="  padding: 0px 60pt;">기온: ${temp}<span style="font: smaller";>°C</span></span></p>
+                                            </div>
+                                          </div>`
+
+                        $('#names-q1').append(temp_html)
+                        return temp
+                    }
+                })
+            }
+        }
+  </script>
 </head>
 
 <body>
@@ -45,19 +156,22 @@
         <ul class="nav">
           <li><a href="/About" class="menu_font">ABOUT US</a></li>
         </ul>
-        <div class="dropdown_dk">
-          <div class="input-group">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary dropdown-toggle menu_font" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  line-height: 55px;">SEASON LOOK
-              </button>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">1</a>
-                <a class="dropdown-item" href="#">2</a>
-                <a class="dropdown-item" href="#">3</a>
-              </div>
+            <div class="dropdown_dk">
+                <div class="input-group">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary dropdown-toggle menu_font" type="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false" style="font-size: 20px; color: #000000;">BRAND PAGE
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="https://github.com/RbCream" style="font-family:'OTWelcomeRA';">헌종</a>
+                            <a class="dropdown-item" href="https://blog.naver.com/pgd6446" style="font-family:'OTWelcomeRA';">기덕</a>
+                            <a class="dropdown-item" href="https://blog.naver.com/surmang" style="font-family:'OTWelcomeRA';">병철</a>
+                            <a class="dropdown-item" href="https://velog.io/@tumemanque00" style="font-family:'OTWelcomeRA';">도경</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -65,22 +179,26 @@
     <div class="mainimg_dk">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="text">
-          <p class="banner_font">WeatherLOOK<span style="font-family: 'SF_IceLemon';">&nbsp;:&nbsp;웨더룩</span></p>
+          <p class="banner_font">WeatherLOOK<br><span style="font-family: 'OTWelcomeRA'; font-size: 60px;">&nbsp;웨더룩</span></br></p>
         </div>
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="../static/spring.jpg" alt="1/3">
+            <img class="d-block w-100" src="../static/img_1_4.jpg" alt="1/4">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="../static/img02.jpg" alt="2/3">
+            <img class="d-block w-100" src="../static/m_img_02.jpg" alt="2/4">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="../static/img03.jpg" alt="3/3">
+            <img class="d-block w-100" src="../static/m_img_03.jpg" alt="3/4">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="../static/m_img_04.jpg" alt="4/4">
           </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -96,24 +214,9 @@
     </div>
     <!-- 배너, Weather_LOOK-->
     <div class="banner2">
-      <div class="center">
-        <label style=" color: #fff;  margin: 10px; font-size: 25px; font-weight: 600;">오늘의 날씨
-          <select class="choice_small" style="padding: 7px;  border-radius: 5px;">
-            <option value="">맑음</option>
-            <option value="">흐림</option>
-            <option value="">비</option>
-            <option value="">눈</option>
-          </select></label>
-        <div class="sub_choice under_button">
-          <p style="  padding: 0 20px;">지역 날씨/온도<span style="  padding: 80px;"> api <span></p>
+        <div class="center" id="names-q1">
         </div>
-        <div class="sub_choice under_button">
-          <p> <input type='checkbox' name='ch-box' onclick='checkSelectAll()' /> 남자 </p>
         </div>
-        <div class="sub_choice under_button">
-          <p> <input type='checkbox' name='ch-box' onclick='checkSelectAll()' /> 여자 </p>
-        </div>
-      </div>
     </div>
   </div>
   <!-- 하단 소개 네비게이션바 -->
@@ -121,167 +224,8 @@
 
   <!-- 하단 갤러리 -->
   <div class="total_gallery" id="opt1">
-<!-- 1번 갤러리 -->
-    <div class="sub_gallery">
-       <a href="#" data-toggle="modal" data-target="#imgpopup1">
-        <img src="../static/w1.jpg" alt="" width="200">
-      </a>
-    </div>
-
-    <!--modal-->
-<div class="modal fade" id="imgpopup1" data-keyboard="false">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">사진제목</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-            <img class="card-img-top rounded img-fluid" src="../static/w1.jpg">
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-        
-      </div>
-    </div>
-</div>
-
-<!-- 2번 갤러리 -->
-    <div class="sub_gallery">
-       <a href="#" data-toggle="modal" data-target="#imgpopup2">
-        <img src="../static/w3.jpg" alt="" width="200">
-      </a>
-    </div>
-
-    <!--modal-->
-<div class="modal fade" id="imgpopup2" data-keyboard="false">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">사진제목</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-            <img class="card-img-top rounded img-fluid" src="../static/w3.jpg">
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-        
-      </div>
-    </div>
-</div>
-
-<!-- 3번 갤러리 -->
-    <div class="sub_gallery">
-       <a href="#" data-toggle="modal" data-target="#imgpopup3">
-        <img src="../static/w8.jpg" alt="" width="200">
-      </a>
-    </div>
-
-    <!--modal-->
-<div class="modal fade" id="imgpopup3" data-keyboard="false">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">사진제목</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-            <img class="card-img-top rounded img-fluid" src="../static/w8.jpg">
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-        
-      </div>
-    </div>
-</div>
-
-
-<!-- 4번 갤러리 -->
-    <div class="sub_gallery">
-       <a href="#" data-toggle="modal" data-target="#imgpopup4">
-        <img src="../static/w12.jpg" alt="" width="200">
-      </a>
-    </div>
-
-    <!--modal-->
-<div class="modal fade" id="imgpopup4" data-keyboard="false">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">사진제목</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-            <img class="card-img-top rounded img-fluid" src="../static/w12.jpg">
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-        
-      </div>
-    </div>
-</div>
-
-<!-- 5번 갤러리 -->
-    <div class="sub_gallery">
-       <a href="#" data-toggle="modal" data-target="#imgpopup5">
-        <img src="../static/w13.jpg" alt="" width="200">
-      </a>
-    </div>
-
-    <!--modal-->
-<div class="modal fade" id="imgpopup5" data-keyboard="false">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">사진제목</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-            <img class="card-img-top rounded img-fluid" src="../static/w13.jpg">
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-        
-      </div>
-    </div>
-</div>
-</div>
+  
+  </div>
 
 
   <!-- Footer -->

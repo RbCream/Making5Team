@@ -1,123 +1,131 @@
 @charset "utf-8";
 
 @font-face {
-  font-family: 'SF_IceLemon';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_IceLemon.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'OTWelcomeRA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'InkLipquid';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 .banner_font {
-  font-family: 'Noto Serif Display', serif;
-  color: #fff;
+    font-family: 'Noto Serif Display', serif;
+    color: #fff;
 }
 
 .menu_font {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 20px;
-  color: #000000;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 20px;
+    color: #000000;
 }
 
 .wrap {
-  width: 100%;
+    width: 100%;
 }
 
 .intro {
-  width: 1008px;
-  height: 80px;
-  margin: auto;
+    width: 1008px;
+    height: 80px;
+    margin: auto;
 }
 
 .logo {
-  width: 80px;
-  height: 80px;
-  float: left;
-  background-color: lightslategray;
+    width: 80px;
+    height: 80px;
+    float: left;
 }
 
 .header {
-  float: left;
-  display: flex;
+    float: left;
+    display: flex;
 }
 
 
 a:hover, a:link, a:visited, a:active {
-  text-decoration: none;
+    text-decoration: none;
 }
-.menu_font:hover{
-  text-decoration: none;
-  color:#000000
+
+.menu_font:hover {
+    text-decoration: none;
+    color: #000000
 }
 
 .sub_choice p {
-  color: #fff;
-  text-decoration: none;
-  margin: 10px;
-  font-size: 25px;
-  font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    margin: 10px;
+    font-size: 25px;
+    font-weight: 600;
 }
 
 .input-group-append button {
-  border: 0;
-  outline: 0;
+    border: 0;
+    outline: 0;
 }
 
 .nav {
-  margin-left: 620px;
-  line-height: 70px;
+    margin-left: 620px;
+    line-height: 70px;
+    margin-top: 21px;
 }
 
 .dropdown_dk {
-  margin-left: 30px;
-  width: 100px;
-  margin-top: 35333
+    margin-left: 30px;
+    width: 100px;
+    margin-top: 35px;
 }
 
 .banner {
-  position: relative;
-  background: #333;
-  width: 100%;
-  height: 200px;
-  margin: auto;
+    position: relative;
+    background: #333;
+    width: 100%;
+    height: 200px;
+    margin: auto;
 }
 
 .text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 80px;
-  width: 100%;
-  color: black;
-  z-index: 2;
-  text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100px;
+    width: min-content;
+    color: black;
+    z-index: 2;
+    text-align: center;
 }
 
 .mainimg_dk {
-  margin: auto;
+    margin: auto;
 }
 
 .mainimg_dk img {
-  max-width: 100%;
-  height: 500px;
+    max-width: 100%;
+    height: 500px;
 }
 
 .center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  color: black;
-  z-index: 2;
-  text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    color: black;
+    z-index: 2;
+    text-align: center;
 }
 
 .banner2 {
-  position: relative;
-  background: #333;
-  width: 100%;
-  height: 100px;
-  margin: auto;
-  background: #048;
+    position: relative;
+    background: #333;
+    width: 100%;
+    height: 100px;
+    margin: auto;
+    background: #048;
 }
