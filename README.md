@@ -11,3 +11,7 @@ Making CHALLENGE 6th 5team
 2. 날씨/온도/성별로 자동 추천되는 옷 
 3. 제품상세페이지
 4. 팀원 소개까지 !!
+
+-----
+Frontend - bootstrap, jquary, js, html
+backend  - Flask, AWS EC2 ( Linux Ubuntu ), imgBB (이미지 업로드), MongoDB
