@@ -15,3 +15,8 @@ Making CHALLENGE 6th 5team
 Frontend - bootstrap, jquary, js, html
 
 backend  - Flask, AWS EC2 ( Linux Ubuntu ), imgBB (이미지 업로드), MongoDB
+
+** 내가 진행한것
+ - 프론트 파편화되있는것들 병합 / AWS EC2 Linux 세팅 (방화벽,권한등) / MongoDB 설치, 테스트 
+    Flask 설치 및 테스트 / 가비아 통해 호스팅 진행 
+    / Notion 제작, 회의록 정리 / imgBB 사용하여 DB와 연동될 이미지 업로드
