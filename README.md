@@ -12,6 +12,10 @@ Making CHALLENGE 6th 5team
 3. 제품상세페이지
 4. 팀원 소개까지 !!
 
+![Honeycam 2022-01-11 20-15-10](https://user-images.githubusercontent.com/46837511/148932967-5b63a1b8-7d54-421a-9143-5d7eb51028de.gif)
+
+
+
 Frontend - bootstrap, jquary, js, html
 
 backend  - Flask, AWS EC2 ( Linux Ubuntu ), imgBB (이미지 업로드), MongoDB
